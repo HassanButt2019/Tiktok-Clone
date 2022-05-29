@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ticktok_clone/views/screens/auth/login_screen.dart';
 
 import 'constants.dart';
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
 
       ),
       title: 'Ticktok Clone',
-      home: const Text("HELLO WORLD"),
+      home:  LoginScreen(),
     );
   }
 }
