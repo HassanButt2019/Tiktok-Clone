@@ -38,6 +38,10 @@ lib/generated_plugin_registrant.dart
 # Symbolication related
 app.*.symbols
 
+google-services.json
+firebase_options.dart
+firebase_app_id_file.json
+
 # Obfuscation related
 app.*.map.json
 
