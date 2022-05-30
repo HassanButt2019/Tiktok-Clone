@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:ticktok_clone/views/screens/auth/signup_screen.dart';
 import 'package:ticktok_clone/views/widgets/text_input_field.dart';
 
@@ -9,6 +10,7 @@ class LoginScreen extends StatelessWidget {
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  
 
   @override
   Widget build(BuildContext context) {
@@ -62,14 +64,30 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               child: InkWell(
-                onTap: () {},
-                child: const Center(
-                  child: Text(
-                    'Login',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
+                onTap: ()=> authController.loginUser(_emailController.text, _passwordController.text),
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children:  [
+                    Text(
+                        'Login',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                     const  SizedBox(width: 20,),
+                    
+                    Container(child: Obx((){
+                    return authController.isLogin.value? CircularProgressIndicator(color: Colors.white,):Container();})
+                    
+                    
+                    
+                    
                     ),
+                    
+                    
+                    ],
                   ),
                 ),
               ),
