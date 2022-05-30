@@ -11,7 +11,7 @@ import 'views/screens/search/search_screen.dart';
 import 'views/screens/videos/video_screen.dart';
 
 
-const List pages = [
+ List pages = [
   VideoScreen(),
   SearchScreen(),
   const AddVideoScreen(),
