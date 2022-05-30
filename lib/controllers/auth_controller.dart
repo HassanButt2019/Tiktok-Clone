@@ -6,22 +6,46 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:ticktok_clone/constants.dart';
 import 'package:ticktok_clone/models/user_model.dart' as model;
+import 'package:ticktok_clone/views/screens/auth/login_screen.dart';
 import 'package:ticktok_clone/views/screens/home/home_screen.dart';
 
 class AuthController extends GetxController {
   static AuthController authInstance = Get.find();
 
-  RxBool isLogin = false.obs;
+  RxBool isLoading = false.obs;
+
+  late Rx<User?> _user;
 
   Rx<File?>? _pickedImage;
   File? get profilePhoto => _pickedImage!.value;
+
+
+  @override
+  void onReady() {
+    // TODO: implement onReady
+    super.onReady();
+    _user = Rx<User?>(firebaseAuth.currentUser);
+    _user.bindStream(firebaseAuth.authStateChanges());
+    ever(_user, _setInitialScreen);
+  }
+
+
+  _setInitialScreen(User? user)
+  {
+    if(user == null)
+      {
+        Get.offAll(()=> LoginScreen());
+      }else{
+      Get.offAll(()=> const HomeScreen());
+    }
+  }
 
   void pickImage() async {
     final pickedImage =
         await ImagePicker().pickImage(source: ImageSource.gallery);
     if (pickedImage != null) {
       Get.snackbar('Profile Picture',
-          'You have successfully selected your profile picture!');
+          'You have successfully selected your views.screens.profile picture!');
     }
     _pickedImage = Rx<File?>(File(pickedImage!.path));
   }
@@ -37,7 +61,6 @@ class AuthController extends GetxController {
 
     TaskSnapshot snap = await uploadTask;
     String url = await snap.ref.getDownloadURL();
-
     return url;
   }
 
@@ -52,6 +75,7 @@ class AuthController extends GetxController {
           phoneNumber.isNotEmpty &&
           image != null) {
         //save user into firebase and auth
+        isLoading.toggle();
 
         UserCredential userCredential = await firebaseAuth
             .createUserWithEmailAndPassword(email: email, password: password);
@@ -74,26 +98,26 @@ class AuthController extends GetxController {
     } catch (err) {
       Get.snackbar("Error Creating Account", err.toString());
     }
+
+    isLoading.toggle();
+
   }
 
   //register the user
-
   void loginUser(String email, String password) async {
     try {
       if (email.isNotEmpty && password.isNotEmpty) {
-        isLogin.toggle();
+        isLoading.toggle();
         //save user into firebase and auth
         UserCredential userCredential = await firebaseAuth
             .signInWithEmailAndPassword(email: email, password: password);
-
-        Get.to(const HomeScreen());
+        Get.offAll(()=>const HomeScreen());
       } else {
         Get.snackbar("Error Login User", "Please Enter All Information");
       }
     } catch (err) {
       Get.snackbar("Error Login Account", err.toString());
     }
-
-    isLogin.toggle();
+    isLoading.toggle();
   }
 }

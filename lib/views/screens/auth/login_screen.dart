@@ -69,7 +69,7 @@ class LoginScreen extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children:  [
-                    Text(
+                   const Text(
                         'Login',
                         style: TextStyle(
                           fontSize: 20,
@@ -79,11 +79,7 @@ class LoginScreen extends StatelessWidget {
                      const  SizedBox(width: 20,),
                     
                     Container(child: Obx((){
-                    return authController.isLogin.value? CircularProgressIndicator(color: Colors.white,):Container();})
-                    
-                    
-                    
-                    
+                    return authController.isLoading.value?const CircularProgressIndicator(color: Colors.white,):Container();})
                     ),
                     
                     

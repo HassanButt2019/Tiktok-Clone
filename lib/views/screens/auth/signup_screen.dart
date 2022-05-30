@@ -3,6 +3,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:ticktok_clone/constants.dart';
 import 'package:ticktok_clone/views/screens/auth/login_screen.dart';
 import 'package:ticktok_clone/views/widgets/text_input_field.dart';
@@ -120,13 +121,22 @@ class SignUpScreen extends StatelessWidget {
                     onTap: () => authController.registerUser(_usernameController.text,
                      _emailController.text,
                       _passwordController.text, _phoneController.text, authController.profilePhoto),
-                    child: const Center(
-                      child: Text(
-                        'Create User',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700,
-                        ),
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                         const Text(
+                            'Create User',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          const  SizedBox(width: 20,),
+                          Container(child: Obx((){
+                            return authController.isLoading.value? const CircularProgressIndicator(color: Colors.white,):Container();})
+                          ),
+                        ],
                       ),
                     ),
                   ),
