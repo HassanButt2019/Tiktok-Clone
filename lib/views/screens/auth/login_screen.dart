@@ -81,8 +81,6 @@ class LoginScreen extends StatelessWidget {
                     Container(child: Obx((){
                     return authController.isLoading.value?const CircularProgressIndicator(color: Colors.white,):Container();})
                     ),
-                    
-                    
                     ],
                   ),
                 ),

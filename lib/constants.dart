@@ -16,7 +16,7 @@ import 'views/screens/videos/video_screen.dart';
   SearchScreen(),
   const AddVideoScreen(),
   MessageScreen(),
-  ProfileScreen(),
+  ProfileScreen(uid: authController.user.uid,),
 ];
 
 

@@ -122,4 +122,14 @@ class AuthController extends GetxController {
     }
     isLoading.toggle();
   }
+
+
+  void signOut() async
+  {
+
+    isLoading.toggle();
+    await firebaseAuth.signOut();
+    isLoading.toggle();
+
+  }
 }

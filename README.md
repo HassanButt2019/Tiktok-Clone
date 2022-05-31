@@ -13,7 +13,8 @@
 - Commenting on Posts *
 - Delete Comments  
 - Liking the Comments *
-- Searching Users
-- Following Users
-- Displaying Followers, Following, Likes & Posts of User
+- Searching Users *
+- Following Users *
+- Displaying Followers , Following, Likes & Posts of User *
+- Private and Public Profile Feature  
 - TikTok Like UI *
