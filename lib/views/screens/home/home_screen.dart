@@ -1,5 +1,6 @@
 
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -34,12 +35,12 @@ class _HomeScreenState extends State<HomeScreen> {
         selectedItemColor: Colors.red,
         unselectedItemColor: Colors.white,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home_outlined ,size:30 ),label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.search_outlined ,size:30 ),label: "Search"),
+            BottomNavigationBarItem(icon: Icon(Icons.home_outlined ,size:30 ),label: "Home"),
+            BottomNavigationBarItem(icon: Icon(Icons.search_outlined ,size:30 ),label: "Search"),
 
-          BottomNavigationBarItem(icon: CustomIcon(),label: ""),
+         !kIsWeb? BottomNavigationBarItem(icon: CustomIcon(),label: ""): BottomNavigationBarItem(icon: Icon(Icons.add , color: Colors.transparent,),label: ' '),
 
-          BottomNavigationBarItem(icon: Icon(Icons.message_outlined ,size:30 ),label: "Message"),
+         BottomNavigationBarItem(icon: Icon(Icons.message_outlined ,size:30 ),label: "Message"),
 
           BottomNavigationBarItem(icon: Icon(Icons.person_outline_outlined ,size:30 ),label: "Profile"),
 

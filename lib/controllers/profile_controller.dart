@@ -13,6 +13,9 @@ class ProfileController extends GetxController
   Map<String , dynamic> get user => _user.value;
 
 
+  RxBool isFollowing = false.obs;
+
+
    Rx<String> _uid = "".obs;
 
    updateUserId(String uid)
@@ -42,7 +45,7 @@ class ProfileController extends GetxController
      int likes = 0;
      int followers = 0;
      int following = 0;
-     bool isFollowing = false;
+
 
 
      for(var item in myVideos.docs)
@@ -63,18 +66,22 @@ class ProfileController extends GetxController
          .doc(authController.user.uid)
          .get()
          .then((value) {
-           print(isFollowing);
+
+
        if (value.exists) {
-         isFollowing = true;
+         isFollowing.value = true;
+         print("HEKKI ${isFollowing.value}");
        } else {
-         isFollowing = false;
+         isFollowing.value = false;
+         print("HEKKI ${isFollowing.value}");
+
        }
-     });
+         });
 
      _user.value = {
        'followers': followers.toString(),
        'following': following.toString(),
-       'isFollowing': isFollowing,
+       'isFollowing': isFollowing.value,
        'likes': likes.toString(),
        'profileImage': profilePhoto,
        'name': name,

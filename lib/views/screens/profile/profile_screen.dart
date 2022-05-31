@@ -47,7 +47,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ],
               title: Center(
                 child: Text(
-                  profileController.user["name"],
+                  profileController.user["name"].toString(),
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
@@ -199,47 +199,58 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           const SizedBox(
                             width: 50,
                           ),
-                          TextButton(
-                            style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all(
-                                    controller.user['isFollowing']
-                                        ? Colors.black
-                                        : Colors.red)),
-                            onPressed: () => {
-                              if (widget.uid == authController.user.uid)
-                                {authController.signOut()}
-                              else
-                                {controller.followUser()}
-                            },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Center(
-                                  child: Text(
-                                    widget.uid == authController.user.uid
-                                        ? 'Sign Out'
-                                        : controller.user['isFollowing']
-                                            ? 'Unfollow'
-                                            : 'Follow',
-                                    style: const TextStyle(
-                                      fontSize: 16,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                Container(child: Obx(() {
-                                  return authController.isLoading.value
-                                      ? const CircularProgressIndicator(
+                          Obx(() {
+                            print('Proflie screen   ${controller.isFollowing.value}');
+                              return TextButton(
+                                style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all(
+                                        controller.isFollowing.value
+                                            ? Colors.black
+                                            : Colors.red)),
+                                onPressed: () => {
+
+                                  if (widget.uid == authController.user.uid)
+                                    {authController.signOut()}
+                                  else
+                                    {
+                                      controller.isFollowing.toggle(),
+                                      controller.followUser()
+
+                                    }
+
+
+                                },
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Center(
+                                      child: Text(
+                                        widget.uid == authController.user.uid
+                                            ? 'Sign Out'
+                                            : controller.isFollowing.value
+                                                ? 'Unfollow'
+                                                : 'Follow',
+                                        style: const TextStyle(
+                                          fontSize: 16,
                                           color: Colors.white,
-                                          strokeWidth: 3,
-                                        )
-                                      : Container();
-                                })),
-                              ],
-                            ),
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Container(child: Obx(() {
+                                      return authController.isLoading.value
+                                          ? const CircularProgressIndicator(
+                                              color: Colors.white,
+                                              strokeWidth: 3,
+                                            )
+                                          : Container();
+                                    })),
+                                  ],
+                                ),
+                              );
+                            }
                           ),
                         ],
                       ),
