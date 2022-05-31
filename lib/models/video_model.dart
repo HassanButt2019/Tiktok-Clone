@@ -12,6 +12,8 @@ class Video {
   String videoUrl;
   String thumbnail;
   String profilePhoto;
+  String uploadedAt;
+
 
   Video({
     required this.username,
@@ -25,6 +27,7 @@ class Video {
     required this.videoUrl,
     required this.profilePhoto,
     required this.thumbnail,
+    required this.uploadedAt
   });
 
   Map<String, dynamic> toJson() => {
@@ -39,6 +42,7 @@ class Video {
     "caption": caption,
     "videoUrl": videoUrl,
     "thumbnail": thumbnail,
+    "uploadedAt":uploadedAt
   };
 
   static Video fromSnap(DocumentSnapshot snap) {
@@ -56,6 +60,7 @@ class Video {
       videoUrl: snapshot['videoUrl'],
       profilePhoto: snapshot['profilePhoto'],
       thumbnail: snapshot['thumbnail'],
+        uploadedAt:snapshot["uploadedAt"]
     );
   }
 }

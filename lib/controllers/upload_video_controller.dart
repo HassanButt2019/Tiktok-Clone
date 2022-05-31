@@ -4,6 +4,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:ticktok_clone/constants.dart';
 import 'package:ticktok_clone/models/video_model.dart';
 import 'package:ticktok_clone/views/screens/home/home_screen.dart';
@@ -57,6 +58,9 @@ class UploadVideoController extends GetxController
       int length = allDoc.docs.length;
       String url = await  _uploadVideoToStorage("Video $length",path);
       String thumbnail = await _uploadImageToStorage("Video $length", path);
+      DateTime now = DateTime.now();
+      String formattedDate = DateFormat('MM-dd-yyyy HH:mm:ss').format(now);
+
 
       Video video = Video(
         username: (userDoc.data()! as Map<String, dynamic>)['name'].toString(),
@@ -70,6 +74,8 @@ class UploadVideoController extends GetxController
         videoUrl: url.toString(),
         profilePhoto: (userDoc.data()! as Map<String, dynamic>)['profileImage'].toString(),
         thumbnail: thumbnail.toString(),
+          uploadedAt:formattedDate
+
       );
 
       await firestore.collection('videos').doc('Video $length').set(

@@ -17,15 +17,38 @@ class VideoController extends GetxController
   void onInit() {
     // TODO: implement onInit
     super.onInit();
-    _videoList.bindStream(firestore.collection("videos").snapshots().map((QuerySnapshot snapshot){
+    _videoList.value.sort((a,b) => a.uploadedAt.compareTo(b.uploadedAt));
+    _videoList.bindStream(firestore.collection("videos").orderBy("uploadedAt",descending: true).snapshots().map((QuerySnapshot snapshot){
       List<Video> retVal = [];
       for (var element in snapshot.docs) {
         retVal.add(
           Video.fromSnap(element),
         );
+
       }
       return retVal;
     }));
   }
+
+
+  likeVideo(String id) async{
+  DocumentSnapshot doc = await firestore.collection("videos").doc(id).get();
+  var uid = authController.user.uid;
+
+  if((doc.data()! as dynamic )['likes'].contains(uid))
+    {
+      await firestore.collection("videos").doc(id).update({
+        'likes':FieldValue.arrayRemove([uid])
+      });
+    }else
+      {
+        await firestore.collection("videos").doc(id).update({
+          'likes':FieldValue.arrayUnion([uid])
+        });
+      }
+  }
+
+
+
 
 }
