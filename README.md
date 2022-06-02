@@ -18,3 +18,13 @@
 - Displaying Followers , Following, Likes & Posts of User *
 - Private and Public Profile Feature  
 - TikTok Like UI *
+
+
+
+
+# Views
+
+
+### Android View
+https://user-images.githubusercontent.com/48251967/171599625-300badd5-9b55-471c-89fc-e411ccbba286.MP4
+
