@@ -3,7 +3,7 @@
 
 ## Features
 - Authentication with Email & Password* / Phone Number , Facebook Auth , Apple Auth , Google Auth
-- Sends Email on Registration
+- Sends Email on Registration/Login * , On UPLOAD OF VIDEO
 - Uploading Videos with Name and Caption *
 - Deleting Videos From Firebase  
 - Compressing Videos *

@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:ticktok_clone/views/screens/auth/signup_screen.dart';
 import 'package:ticktok_clone/views/widgets/text_input_field.dart';
@@ -10,7 +13,6 @@ class LoginScreen extends StatelessWidget {
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  
 
   @override
   Widget build(BuildContext context) {
@@ -64,23 +66,33 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               child: InkWell(
-                onTap: ()=> authController.loginUser(_emailController.text, _passwordController.text),
+                onTap: () => {
+
+                  authController.loginUser(
+                    _emailController.text, _passwordController.text),
+
+                },
                 child: Center(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children:  [
-                   const Text(
+                    children: [
+                      const Text(
                         'Login',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                     const  SizedBox(width: 20,),
-                    
-                    Container(child: Obx((){
-                    return authController.isLoading.value?const CircularProgressIndicator(color: Colors.white,):Container();})
-                    ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      Container(child: Obx(() {
+                        return authController.isLoading.value
+                            ? const CircularProgressIndicator(
+                                color: Colors.white,
+                              )
+                            : Container();
+                      })),
                     ],
                   ),
                 ),

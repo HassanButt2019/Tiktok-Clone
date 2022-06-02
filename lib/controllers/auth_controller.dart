@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
@@ -8,6 +9,8 @@ import 'package:ticktok_clone/constants.dart';
 import 'package:ticktok_clone/models/user_model.dart' as model;
 import 'package:ticktok_clone/views/screens/auth/login_screen.dart';
 import 'package:ticktok_clone/views/screens/home/home_screen.dart';
+import 'package:http/http.dart'as http;
+
 
 class AuthController extends GetxController {
   static AuthController authInstance = Get.find();
@@ -29,6 +32,27 @@ class AuthController extends GetxController {
     _user = Rx<User?>(firebaseAuth.currentUser);
     _user.bindStream(firebaseAuth.authStateChanges());
     ever(_user, _setInitialScreen);
+  }
+
+  Future sendEmail(String name,String subject, String email, String message) async {
+    final url = Uri.parse('https://api.emailjs.com/api/v1.0/email/send');
+    const templateId = 'template_34oqqeg';
+    const userId = 'KdfJ6R7msjgm8Pwxy';
+    final response = await http.post(url,
+        headers: {'Content-Type': 'application/json'},
+        body: json.encode({
+          'service_id': "service_zcdbwyp",
+          'template_id': templateId,
+          'user_id': userId,
+          "accessToken":"rmk_4hYQpABy2h0H-SzEg",
+          'template_params': {
+            'to_name': name,
+            "subject": subject,
+            'message': message,
+            "to_email":email,
+          }
+        }));
+    return response.statusCode;
   }
 
 
@@ -78,9 +102,16 @@ class AuthController extends GetxController {
           image != null) {
         //save user into firebase and auth
         isLoading.toggle();
+        var message =
+        """ 
+        You Just Registered In Our Application at ${DateTime.now().toUtc().toString().substring(0,19)}
+        """;
 
         UserCredential userCredential = await firebaseAuth
-            .createUserWithEmailAndPassword(email: email, password: password);
+            .createUserWithEmailAndPassword(email: email, password: password).then((value) {
+          sendEmail(username, "You Just Have Registered In Our Application", email,message );
+          return value;
+        });;
 
         String url = await _uploadToStorage(image);
         model.User usr = model.User(
@@ -110,9 +141,16 @@ class AuthController extends GetxController {
     try {
       if (email.isNotEmpty && password.isNotEmpty) {
         isLoading.toggle();
+        var message =
+        """ 
+        You Just Loggin In Our Application at ${DateTime.now().toUtc().toString().substring(0,19)}
+        """;
         //save user into firebase and auth
         UserCredential userCredential = await firebaseAuth
-            .signInWithEmailAndPassword(email: email, password: password);
+            .signInWithEmailAndPassword(email: email, password: password).then((value) {
+             sendEmail(_user.value!.displayName.toString(), "You Just Have Loggin In Our Application", email,message );
+            return value;
+        });
         Get.offAll(()=>const HomeScreen());
       } else {
         Get.snackbar("Error Login User", "Please Enter All Information");
