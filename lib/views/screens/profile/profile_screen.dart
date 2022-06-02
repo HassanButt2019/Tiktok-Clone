@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ticktok_clone/constants.dart';
 import 'package:ticktok_clone/controllers/profile_controller.dart';
+import 'package:ticktok_clone/views/widgets/network_image.dart';
 
 class ProfileScreen extends StatefulWidget {
   final String uid;
@@ -66,19 +67,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           ClipOval(
-                            child: CachedNetworkImage(
-                              fit: BoxFit.cover,
-                              imageUrl: profileController.user["profileImage"]
-                                  .toString(),
-                              height: 100,
-                              width: 100,
-                              placeholder: (context, url) =>
-                                  const CircularProgressIndicator(),
-                              errorWidget: (context, url, error) => const Icon(
-                                Icons.error_outline,
-                                size: 10,
-                              ),
-                            ),
+                            child: CustomNetworkImage(imgUrl:  profileController.user["profileImage"]
+                                .toString(),)
                           ),
                         ],
                       ),

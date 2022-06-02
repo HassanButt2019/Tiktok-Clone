@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:ticktok_clone/controllers/auth_controller.dart';
 
@@ -14,7 +15,7 @@ import 'views/screens/videos/video_screen.dart';
  List pages = [
   VideoScreen(),
   SearchScreen(),
-  const AddVideoScreen(),
+  kIsWeb?const AddVideoScreen():Container(),
   MessageScreen(),
   ProfileScreen(uid: authController.user.uid,),
 ];

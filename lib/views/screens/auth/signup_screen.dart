@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:ticktok_clone/constants.dart';
 import 'package:ticktok_clone/views/screens/auth/login_screen.dart';
+import 'package:ticktok_clone/views/widgets/network_image.dart';
 import 'package:ticktok_clone/views/widgets/text_input_field.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -45,9 +46,8 @@ class SignUpScreen extends StatelessWidget {
                   children: [
                     const CircleAvatar(
                       radius: 64,
-                      backgroundImage: NetworkImage(
-                          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png'),
                       backgroundColor: Colors.black,
+                      child: CustomNetworkImage(imgUrl: 'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png'),
                     ),
                     Positioned(
                       bottom: -10,

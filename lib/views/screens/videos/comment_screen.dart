@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:ticktok_clone/constants.dart';
 import 'package:ticktok_clone/controllers/comment_controller.dart';
+import 'package:ticktok_clone/views/widgets/network_image.dart';
 import 'package:timeago/timeago.dart' as tago;
 
 class CommentScreen extends StatelessWidget {
@@ -36,8 +37,8 @@ class CommentScreen extends StatelessWidget {
                           return ListTile(
                             leading: CircleAvatar(
                               backgroundColor: Colors.black,
-                              backgroundImage: NetworkImage(comment.profilePhoto),
-                            ),
+                              child: CustomNetworkImage(imgUrl: comment.profilePhoto),
+                             ),
                             title: Row(
                               children: [
                                 Text(comment.username,style: TextStyle(fontSize: 18 , color: Colors.red , fontWeight: FontWeight.w700),),

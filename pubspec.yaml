@@ -48,7 +48,6 @@ dependencies:
       url: https://github.com/jonataslaw/VideoCompress.git
       ref: master
   intl: ^0.17.0
-  flutter_email_sender: ^5.1.0
   http: ^0.13.4
 
 

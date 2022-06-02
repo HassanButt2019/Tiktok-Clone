@@ -5,6 +5,7 @@ import 'package:ticktok_clone/constants.dart';
 import 'package:ticktok_clone/controllers/video_controller.dart';
 import 'package:ticktok_clone/views/screens/videos/comment_screen.dart';
 import 'package:ticktok_clone/views/widgets/circle_animation.dart';
+import 'package:ticktok_clone/views/widgets/network_image.dart';
 import 'package:ticktok_clone/views/widgets/video_player_item.dart';
 import 'package:video_player/video_player.dart';
 
@@ -33,10 +34,7 @@ class VideoScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(25)),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(25),
-                child: Image(
-                  image: NetworkImage(profilePhoto),
-                  fit: BoxFit.cover,
-                ),
+                child: CustomNetworkImage(imgUrl: profilePhoto)
               ))
         ],
       ),
@@ -60,10 +58,7 @@ class VideoScreen extends StatelessWidget {
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(25),
-              child: Image(
-                image: NetworkImage(profilePhoto),
-                fit: BoxFit.cover,
-              ),
+              child: CustomNetworkImage(imgUrl: profilePhoto)
             ),
           ),
         )
