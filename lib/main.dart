@@ -1,10 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ticktok_clone/controllers/auth_controller.dart';
 import 'package:ticktok_clone/firebase_options.dart';
-import 'package:ticktok_clone/views/screens/auth/login_screen.dart';
 import 'constants.dart';
+import 'views/auth/login_screen.dart';
+import 'web_view/auth/login_screen.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,6 +24,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(kIsWeb);
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
@@ -29,7 +32,7 @@ class MyApp extends StatelessWidget {
 
       ),
       title: 'Ticktok Clone',
-      home:  LoginScreen(),
+      home: kIsWeb? KWebLoginScreen():LoginScreen(),
     );
   }
 }

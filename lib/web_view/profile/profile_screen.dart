@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ticktok_clone/constants.dart';
 import 'package:ticktok_clone/controllers/profile_controller.dart';
-import 'package:ticktok_clone/views/widgets/network_image.dart';
+import 'package:ticktok_clone/widgets/network_image.dart';
 
-class ProfileScreen extends StatefulWidget {
+class KWebProfileScreen extends StatefulWidget {
   final String uid;
-  ProfileScreen({Key? key, required this.uid}) : super(key: key);
+  KWebProfileScreen({Key? key, required this.uid}) : super(key: key);
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
+  State<KWebProfileScreen> createState() => _KWebProfileScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _KWebProfileScreenState extends State<KWebProfileScreen> {
   final ProfileController profileController = Get.put(ProfileController());
 
   @override

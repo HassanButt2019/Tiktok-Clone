@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:ticktok_clone/constants.dart';
-import 'package:ticktok_clone/views/widgets/custom_icon.dart';
+import 'package:ticktok_clone/widgets/custom_icon.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: backgroundColor,
         selectedItemColor: Colors.red,
         unselectedItemColor: Colors.white,
-        items: const [
+        items:  [
             BottomNavigationBarItem(icon: Icon(Icons.home_outlined ,size:30 ),label: "Home"),
             BottomNavigationBarItem(icon: Icon(Icons.search_outlined ,size:30 ),label: "Search"),
 

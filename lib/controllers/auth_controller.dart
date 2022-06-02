@@ -3,13 +3,16 @@ import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:ticktok_clone/constants.dart';
 import 'package:ticktok_clone/models/user_model.dart' as model;
-import 'package:ticktok_clone/views/screens/auth/login_screen.dart';
-import 'package:ticktok_clone/views/screens/home/home_screen.dart';
 import 'package:http/http.dart'as http;
+import 'package:ticktok_clone/views/auth/login_screen.dart';
+import 'package:ticktok_clone/views/home/home_screen.dart';
+import 'package:ticktok_clone/web_view/auth/login_screen.dart';
+import 'package:ticktok_clone/web_view/home/home_screen.dart';
 
 
 class AuthController extends GetxController {
@@ -60,9 +63,9 @@ class AuthController extends GetxController {
   {
     if(user == null)
       {
-        Get.offAll(()=> LoginScreen());
+        Get.offAll(()=>kIsWeb? KWebLoginScreen():LoginScreen());
       }else{
-      Get.offAll(()=> const HomeScreen());
+      Get.offAll(()=> kIsWeb? const KWebHomeScreen():const HomeScreen());
     }
   }
 

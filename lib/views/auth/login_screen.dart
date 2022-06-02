@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:ticktok_clone/views/screens/auth/signup_screen.dart';
-import 'package:ticktok_clone/views/widgets/text_input_field.dart';
+import 'package:ticktok_clone/views/auth/signup_screen.dart';
+import 'package:ticktok_clone/widgets/text_input_field.dart';
 import '../../../constants.dart';
 
 class LoginScreen extends StatelessWidget {

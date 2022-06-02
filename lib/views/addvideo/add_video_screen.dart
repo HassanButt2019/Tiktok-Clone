@@ -6,7 +6,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:ticktok_clone/constants.dart';
-import 'package:ticktok_clone/views/screens/addvideo/conform_screen.dart';
+import 'package:ticktok_clone/views/addvideo/conform_screen.dart';
 
 class AddVideoScreen extends StatefulWidget {
   const AddVideoScreen({Key? key}) : super(key: key);

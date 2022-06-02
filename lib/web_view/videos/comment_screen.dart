@@ -6,17 +6,15 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:ticktok_clone/constants.dart';
 import 'package:ticktok_clone/controllers/comment_controller.dart';
-import 'package:ticktok_clone/views/widgets/network_image.dart';
+import 'package:ticktok_clone/widgets/network_image.dart';
 import 'package:timeago/timeago.dart' as tago;
 
-class CommentScreen extends StatelessWidget {
+class KWebCommentScreen extends StatelessWidget {
   final id;
-   CommentScreen({Key? key,required this.id}) : super(key: key);
+   KWebCommentScreen({Key? key,required this.id}) : super(key: key);
 
   final TextEditingController controller = TextEditingController();
   CommentController commentController = Get.put(CommentController());
-
-
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;

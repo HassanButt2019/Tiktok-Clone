@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ticktok_clone/controllers/search_controller.dart';
-import 'package:ticktok_clone/views/screens/profile/profile_screen.dart';
-import 'package:ticktok_clone/views/widgets/network_image.dart';
+import 'package:ticktok_clone/views/profile/profile_screen.dart';
+import 'package:ticktok_clone/widgets/network_image.dart';
 
 class SearchScreen extends StatelessWidget {
   SearchScreen({Key? key}) : super(key: key);

@@ -5,18 +5,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:ticktok_clone/constants.dart';
-import 'package:ticktok_clone/views/screens/auth/login_screen.dart';
-import 'package:ticktok_clone/views/widgets/network_image.dart';
-import 'package:ticktok_clone/views/widgets/text_input_field.dart';
+import 'package:ticktok_clone/views/auth/login_screen.dart';
+import 'package:ticktok_clone/widgets/network_image.dart';
+import 'package:ticktok_clone/widgets/text_input_field.dart';
 
-class SignUpScreen extends StatelessWidget {
+import 'login_screen.dart';
+
+class KWebSignUpScreen extends StatelessWidget {
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
 
-   SignUpScreen({Key? key}) : super(key: key);
+   KWebSignUpScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     Size mediaData = MediaQuery.of(context).size;
@@ -65,7 +67,7 @@ class SignUpScreen extends StatelessWidget {
                   height: 15,
                 ),
                 Container(
-                  width: mediaData.width,
+                  width: mediaData.width*0.30,
                   margin: const EdgeInsets.symmetric(horizontal: 20),
                   child: TextInputField(
                     controller: _usernameController,
@@ -76,7 +78,7 @@ class SignUpScreen extends StatelessWidget {
                 ),
                  const SizedBox(height: 25),
                 Container(
-                  width: mediaData.width,
+                  width: mediaData.width*0.30,
                   margin: const EdgeInsets.symmetric(horizontal: 20),
                   child: TextInputField(
                     controller: _emailController,
@@ -87,7 +89,7 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 25),
                 Container(
-                  width: mediaData.width,
+                  width: mediaData.width*0.30,
                   margin: const EdgeInsets.symmetric(horizontal: 20),
                   child: TextInputField(
                     controller: _passwordController,
@@ -99,7 +101,7 @@ class SignUpScreen extends StatelessWidget {
 
                const SizedBox(height: 25),
                 Container(
-                  width: mediaData.width,
+                  width: mediaData.width*0.30,
                   margin: const EdgeInsets.symmetric(horizontal: 20),
                   child: TextInputField(
                     controller: _phoneController,
@@ -109,7 +111,7 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 30),
                 Container(
-                  width: MediaQuery.of(context).size.width - 40,
+                  width: MediaQuery.of(context).size.width*0.30,
                   height: 50,
                   decoration: BoxDecoration(
                     color: buttonColor,
@@ -156,7 +158,7 @@ class SignUpScreen extends StatelessWidget {
                     InkWell(
                       onTap: ()=> Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
-                          builder: (context) => LoginScreen(),
+                          builder: (context) => KWebLoginScreen(),
                         ),
                       ),
                       child: Text(

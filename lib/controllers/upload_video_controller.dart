@@ -7,8 +7,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:ticktok_clone/constants.dart';
 import 'package:ticktok_clone/models/video_model.dart';
-import 'package:ticktok_clone/views/screens/home/home_screen.dart';
-import 'package:ticktok_clone/views/screens/videos/video_screen.dart';
+import 'package:ticktok_clone/views/home/home_screen.dart';
 import 'package:video_compress/video_compress.dart';
 
 class UploadVideoController extends GetxController

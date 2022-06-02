@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ticktok_clone/constants.dart';
 import 'package:ticktok_clone/controllers/video_controller.dart';
-import 'package:ticktok_clone/views/screens/videos/comment_screen.dart';
-import 'package:ticktok_clone/views/widgets/circle_animation.dart';
-import 'package:ticktok_clone/views/widgets/network_image.dart';
-import 'package:ticktok_clone/views/widgets/video_player_item.dart';
+import 'package:ticktok_clone/views/videos/comment_screen.dart';
+import 'package:ticktok_clone/widgets/circle_animation.dart';
+import 'package:ticktok_clone/widgets/network_image.dart';
+import 'package:ticktok_clone/widgets/video_player_item.dart';
 import 'package:video_player/video_player.dart';
 
-class VideoScreen extends StatelessWidget {
-   VideoScreen({Key? key}) : super(key: key);
+class KWebVideoScreen extends StatelessWidget {
+   KWebVideoScreen({Key? key}) : super(key: key);
 
   final VideoController videoController = Get.put(VideoController());
 

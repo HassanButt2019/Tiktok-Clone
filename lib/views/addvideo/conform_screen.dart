@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ticktok_clone/constants.dart';
 import 'package:ticktok_clone/controllers/upload_video_controller.dart';
-import 'package:ticktok_clone/views/widgets/text_input_field.dart';
+import 'package:ticktok_clone/widgets/text_input_field.dart';
 import 'package:video_player/video_player.dart';
 
 class ConformScreen extends StatefulWidget {
